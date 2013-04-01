@@ -1,0 +1,9 @@
+<center>
+  <h4>Login to access features such as our your personalized calender, email and sitting requests.</h4>
+  <%= form_tag "/users" do %>
+    Email:<%= text_field_tag :username %><br />
+    <%= submit_tag "login" %><br />
+    <%= link_to "create account", "/users/create_account", :remote=>true %>
+
+  <% end %>
+</center>

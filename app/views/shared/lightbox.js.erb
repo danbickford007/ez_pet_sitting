@@ -1,0 +1,5 @@
+<% @options ||= {}.to_json %>
+<% contents = render(:partial=>@partial) %>
+$("#dialog").html(<%= contents.to_json.html_safe %>);
+$("#dialog").dialog(<%= @options.html_safe %>);
+      

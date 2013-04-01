@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EzPetSitting</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= image_tag 'gradient.png', :id=>"grad" %>
+  <div id="container">
+    <div class="header"><%= render :partial=>"/layouts/header" %></div>
+    <div id="main">
+      <%= yield %>
+    </div>
+  </div>
+  <div id="dialog" title="Basic dialog">
+
+  </div>
+</body>
+</html>
