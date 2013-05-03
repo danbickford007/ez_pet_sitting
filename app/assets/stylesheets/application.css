@@ -22,7 +22,7 @@
 }
 
 html body{
-  font-family:courier;
+  font-family:italic;
 }
 
 #siteHeader{
@@ -38,8 +38,28 @@ html body{
 
 }
 
+#disclaimer{
+  position:absolute;
+  bottom:10px;
+}
 #grad{
   position:absolute;
   width:100%;
 }
 
+
+.left{
+  float:left;
+}
+
+.right{
+  float:right;
+}
+
+#ticket {
+  border: 1px solid black;
+  border-radius:10px;
+  text-align:center;
+  margin-top:10px;
+  margin-bottom:20px;
+}

@@ -1,0 +1,13 @@
+<%= form_tag "/profiles/create_address" do %>
+  <dl>
+    <dt>Street</dt>
+      <dd><%= text_field_tag :street %></dd>
+    <dt>City</dt>
+      <dd><%= text_field_tag :city %></dd>
+    <dt>Special Instructions</dt>
+      <dd><%= text_field_tag :special_instructions %></dd>
+      <dd><%= submit_tag %></dd>
+  </dl>
+
+
+<% end %>

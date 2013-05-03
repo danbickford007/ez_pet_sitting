@@ -1,0 +1,35 @@
+Your current appointment is set for <%= Date.parse(@appointment.time.to_s).strftime('%m/%d/%Y') %><br />
+<%= link_to "cancel appointment", "/appointments/cancel?id=#{@appointment.id}"  %>
+<h6>Create a new appointment scheduled for <%= @date %>.  Would you like to schedule an appointment?</h6>
+<div>
+  <%= form_tag "/appointments/update_appointment", :method=>"POST", :remote=>true do %>
+    <div class="left">
+      <h4>Create an appointment</h4><br />
+        Date Of Appointment<br />
+        <%= text_field_tag :time, @date %><br />
+    </div>
+    <div class="left" style="margin-left:100px">
+      <h4>Pets Needing Sitting</h4><br />
+        <% if @pets.count < 1 %>
+          Click here to add a pet!
+        <% else %>
+          <% @pets.each do |pet| %>
+            <%= pet.name %>: <%= check_box_tag "Pets[#{pet.id}]", 1, (@appointment.pets.collect{|x| x.id}.include?(pet.id)) %><br />
+          <% end %>
+        <% end %>
+    </div>
+    <div class="left" style="margin-left:100px">
+      <h4>Addresses</h4>
+      <% @addresses.each do |address| %>
+        <%= address.street %> : <%= check_box_tag "Addresses[#{address.id}]", 1, (@appointment.address_id == address.id) %><br />
+      <% end %>
+    </div>
+    <div style="margin-top:80px" class="right">
+      <%= hidden_field_tag :appointment_id, @appointment.id %>
+      <%= submit_tag %>
+    </div>
+  <% end %>
+</div>
+<script>
+  $("#time").datepicker({ dateFormat: "yy-mm-dd" });
+</script>

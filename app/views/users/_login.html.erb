@@ -1,7 +1,12 @@
+<div id="ticket">
+  <h4>8 Pet Sittings = 1 Free Sitting!</h4>
+  Use us for your pet sitting and earn free pet sittings.  
+</div>
 <center>
   <h4>Login to access features such as our your personalized calender, email and sitting requests.</h4>
-  <%= form_tag "/users" do %>
-    Email:<%= text_field_tag :username %><br />
+  <%= form_tag "/users/login", :remote=>true do %>
+    Email:<%= text_field_tag :email %><br />
+    Password:<%= text_field_tag :passcode %><br />
     <%= submit_tag "login" %><br />
     <%= link_to "create account", "/users/create_account", :remote=>true %>
 

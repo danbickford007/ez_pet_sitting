@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+  #
+  skip_before_filter :access_denied
+
   def index
     @users = User.all
 
@@ -40,6 +43,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+    if @user = User.find_by_email_and_passcode(params[:email], params[:passcode])
+      session[:user] = @user
+      render :js=>"window.location.reload()"
+    else
+      @title = "New Account"
+      @options = {'height'=>'300', 'width'=>'500'}.to_json
+      @partial = "shared/error"
+      render "shared/lightbox" 
+    end    
+  end
+
+  def logout
+    session[:user] = nil
+    redirect_to "/users"
+  end
+
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
@@ -52,6 +72,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        session[:user] = @user
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else

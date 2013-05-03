@@ -1,0 +1,29 @@
+<div id="calendar"></div>
+<script>
+  $('#calendar').fullCalendar({
+    dayClick: function(date) {
+      var month = parseInt(date.getMonth());
+      month = month + 1;
+      var d = (date.getFullYear() + "-" + month + "-"+date.getDate());
+      $.ajax({
+        url:"/appointments/show?date="+d
+      })
+    },
+    events: [
+    <% @times = @appointments.collect{|x| x.time if x.time} %>
+    <% @appointments.each_with_index do |app, i| %>
+    {
+      id     : '<%= app.id %>',
+      title  : "Sitting Appt. <%= @times[i].strftime('%m/%d/%Y') %>",
+      start  : "<%= @times[i].strftime('%Y-%m-%d') %>"
+    },
+
+    <% end %>
+    ],
+    eventClick: function(calEvent, jsEvent, view) {
+      $.ajax({
+        url:"/calendar/show?appointment_id="+calEvent.id
+      })
+    }
+  });
+</script>

@@ -1,0 +1,28 @@
+<h5>Create a new appointment scheduled for <%= @date.strftime("%m/%d/%Y") %>.  Would you like to schedule an appointment?</h5>
+<div>
+  <%= form_tag "/appointments", :method=>"POST", :remote=>true do %>
+    <div class="left">
+      <h4>Create an appointment</h4><br />
+        Date Of Appointment<br />
+        <%= text_field_tag :time, @date %><br />
+    </div>
+    <div class="left" style="margin-left:100px">
+      <h4>Pets Needing Sitting</h4><br />
+        <% @pets.each do |pet| %>
+          <%= pet.name %>: <%= check_box_tag "Pets[#{pet.id}]" %><br />
+        <% end %>
+    </div>
+    <div class="left" style="margin-left:100px">
+      <h4>Addresses</h4>
+      <% @addresses.each do |address| %>
+        <%= address.street %> : <%= check_box_tag "Addresses[#{address.id}]" %><br />
+      <% end %>
+    </div>
+    <div style="margin-top:80px" class="right">
+      <%= submit_tag %>
+    </div>
+  <% end %>
+</div>
+<script>
+  $("#time").datepicker({ dateFormat: "yy-mm-dd" });
+</script>

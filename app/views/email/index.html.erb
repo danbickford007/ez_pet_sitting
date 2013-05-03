@@ -1,0 +1,24 @@
+<br />
+<br />
+<br />
+<h4>Email us with questions, comments or for general information</h4>
+<hr />
+<h5>inbox</h5>
+<ul style="overflow-y:scroll; height:100px">
+  <% @emails.each do |email| %>
+    <li><%= link_to email.subject, "" %></li>
+  <% end %>
+</ul>
+<p>
+<hr />
+<h5>new email</h5>
+<% @email = Email.new %>
+<%= form_for @email, :url=>{:controller=>'email', :action=>'send_and_save'} do |f| %>
+  Subject: <%= f.text_field :subject %><br />
+  Content:<br />
+  <%= f.text_area :content, :rows=>'10', :cols=>'100' %><br />
+  <%= f.hidden_field :from_user, :value=>session[:user][:id] %>
+  <%= f.submit %>
+<% end %>
+  
+</p>

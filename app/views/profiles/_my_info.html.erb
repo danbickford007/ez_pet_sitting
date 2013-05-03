@@ -1,0 +1,12 @@
+<h4>Addresses where you want your pet watched</h4>
+<table>
+  <% @addresses.each do |address| %>
+    <tr>
+      <td style="width:200px"><%= address.street %></td>
+      <td style="width:200px"><%= address.city %></td>
+      <td style="width:200px"><%= address.special_instructions %></td>
+      <td style="width:200px"><%= link_to image_tag("delete.png", :style=>"height:40px; width:40px"), "" %></td>
+    </tr>
+  <% end %>
+</table>
+

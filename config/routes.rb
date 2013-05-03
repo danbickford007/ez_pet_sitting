@@ -1,12 +1,37 @@
 EzPetSitting::Application.routes.draw do
 
+  scope :path=>"email", :controller=>"email" do
+    post "send_and_save"
+  end
 
+  scope :path=>"profiles", :controller=>"profiles" do
+    post "create_address"
+  end
+
+  scope :path=>"pets", :controller=>"pets" do
+    get "destroy"
+  end
+  
+  scope :path=>"appointments", :controller=>"appointments" do
+    post "update_appointment"
+    get "cancel"
+  end
 
   scope :path=>"users", :controller=>"users" do
     get "create_account"
-
+    post "login"
+    get "logout"
   end
 
+  resources :appointments
+  resources :calendar
+  resources :profiles
+  resources :services
+  resources :pets
+  resources :email
+  resources :contracts
+  resources :about
+  resources :pet
   resources :users
   root :to=>"users#index"
 

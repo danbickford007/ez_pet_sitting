@@ -1,0 +1,13 @@
+<% @pets.each do |pet| %>
+  <table>
+    <tr>
+      <td style="width:200px"><b><%= pet.name %></b></td>
+      <td style="width:200px"><b><%= pet.breed %></b></td>
+      <td style="width:200px"><b><%= pet.special_instructions %></b></td>
+      <td style="width:200px"><%= link_to image_tag("view.png", :height=>"40px", :width=>"40px"), "/pets/show?pet_id=#{pet.id}", :remote=>true %></td>
+      <td style="width:200px"><%= link_to image_tag("edit.png", :height=>"40px", :width=>"40px"), "/pets/new?id=#{pet.id}", :remote=>true %></td>
+      <td style="width:200px"><%= link_to image_tag("delete.png", :height=>"40px", :width=>"40px"), "/pets/destroy?id=#{pet.id}", :remote=>true %></td>
+    </tr>
+  </table>
+<% end %>
+<br />

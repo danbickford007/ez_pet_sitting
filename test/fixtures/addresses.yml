@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  street: MyString
+  special_instructions: MyString
+  user_id: 1
+
+two:
+  street: MyString
+  special_instructions: MyString
+  user_id: 1

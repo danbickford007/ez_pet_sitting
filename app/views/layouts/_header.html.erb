@@ -1,5 +1,5 @@
 <div id="siteHeader">
-  <%= image_tag('main_header.png') %>
+  <% image_tag('main_header.png') %>
   <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
         <div class="container">
@@ -7,18 +7,23 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">EZPetSitting</a>
+        </a>
+          <% if !session[:user] %>
+            <a class="brand" href="#">EZPetSitting</a>
+          <% else %>
+            <a class="brand" href="#"><%= session[:user][:email] %></a>
+          <% end %>
           <div class="nav-collapse">
-          <ul class="nav">
-          <li><%= link_to "Home" %></li>
-          <li><%= link_to "Services" %></li>
-          <li><%= link_to "About Us" %></li>
-          <li><%= link_to "Contract" %></li>
-          <li><%= link_to "Calendar" %></li>
-          <li><%= link_to "Email" %></li>
-          <li><%= link_to "logout" %></li>
-          </ul>
+            <ul class="nav">
+              <li><%= link_to "Home", "/users" %></li>
+              <li><%= link_to "Profile", "/profiles" %></li>
+              <li><%= link_to "Services", services_path %></li>
+              <li><%= link_to "About Us", about_index_path %></li>
+              <li><%= link_to "Contract", contracts_path %></li>
+              <li><%= link_to "Calendar", "/calendar" %></li>
+              <li><%= link_to "Email", email_index_path %></li>
+              <li><%= link_to "logout", "/users/logout" %></li>
+            </ul>
           </div>
           </div>
           </div>

@@ -1,0 +1,7 @@
+<% @pet = Pet.new %>
+<%= form_for @pet, :url=>{:controller=>"profiles", :action=>"create"} do |f| %>
+  Name: <%= f.text_field :name %><br />
+  Breed:<%= f.text_field :breed %><br />
+  <%= f.submit %>
+
+<% end %>
