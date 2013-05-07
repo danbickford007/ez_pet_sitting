@@ -14,8 +14,9 @@ class Appointment < ActiveRecord::Base
   
   def self.create_new(date, user, pets, address_id)
     date = Date.parse(date)
-    app = Appointment.create(:user_id=>user.id, :time=>date, :address_id=>address_id)
+    app = Appointment.create(:user_id=>user.id, :time=>date)
     app.pets = Pet.find_all_by_id(pets)
+    app.address_id = Address.find(address_id).first.id
     app.save
     Appointment.where(:user_id=>user.id)
   end

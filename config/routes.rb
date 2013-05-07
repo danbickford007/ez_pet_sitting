@@ -2,6 +2,7 @@ EzPetSitting::Application.routes.draw do
 
   scope :path=>"email", :controller=>"email" do
     post "send_and_save"
+    get 'open'
   end
 
   scope :path=>"profiles", :controller=>"profiles" do

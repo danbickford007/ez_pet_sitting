@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+//
+//
+
+
+toggleSlide = function(id){
+  var node = $("#"+id);
+  if(node.css('display') == 'none'){
+    node.slideDown();
+  }else{
+    node.slideUp();
+  }
+}

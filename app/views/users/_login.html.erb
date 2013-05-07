@@ -7,8 +7,8 @@
   <%= form_tag "/users/login", :remote=>true do %>
     Email:<%= text_field_tag :email %><br />
     Password:<%= text_field_tag :passcode %><br />
-    <%= submit_tag "login" %><br />
-    <%= link_to "create account", "/users/create_account", :remote=>true %>
+    <%= submit_tag "login", :class=>"btn" %><br /><br />
+    <%= link_to "create account", "/users/create_account", :remote=>true, :style=>"font-size:20px", :class=>"btn" %>
 
   <% end %>
 </center>

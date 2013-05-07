@@ -1,24 +1,34 @@
-<br />
-<br />
-<br />
-<h4>Email us with questions, comments or for general information</h4>
+<h4 class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">Email us with questions, comments or for general information</h4>
 <hr />
-<h5>inbox</h5>
-<ul style="overflow-y:scroll; height:100px">
-  <% @emails.each do |email| %>
-    <li><%= link_to email.subject, "" %></li>
-  <% end %>
-</ul>
+<h5><%= link_to_function 'inbox', "toggleSlide('email_container')" %></h5>
+<div id="email_container" style="display:none">
+  <ul style="overflow-y:scroll; height:100px">
+    <% @emails.each do |email| %>
+      <li><%= link_to email.subject, open_path(:email_id=>email.id), :remote=>true %></li>
+    <% end %>
+  </ul>
+</div>
 <p>
 <hr />
-<h5>new email</h5>
-<% @email = Email.new %>
-<%= form_for @email, :url=>{:controller=>'email', :action=>'send_and_save'} do |f| %>
-  Subject: <%= f.text_field :subject %><br />
-  Content:<br />
-  <%= f.text_area :content, :rows=>'10', :cols=>'100' %><br />
-  <%= f.hidden_field :from_user, :value=>session[:user][:id] %>
-  <%= f.submit %>
-<% end %>
-  
+<h5><%= link_to_function 'new email', "toggleSlide('new_email')" %></h5>
+<div id="new_email" style="display:none">
+  <% @email = Email.new %>
+  <%= form_for @email, :url=>{:controller=>'email', :action=>'send_and_save'} do |f| %>
+    Subject: <%= f.text_field :subject %><br />
+    Content:<br />
+    <%= f.text_area :content, :size => "100x10" %><br />
+    <%= f.hidden_field :from_user, :value=>session[:user][:id] %>
+    <%= f.submit %>
+  <% end %>
+</div> 
+<hr />
+<h5><%= link_to_function 'sent email', "toggleSlide('sent_email')" %></h5>
+<div id="sent_email" style="display:none">
+  <ul style="overflow-y:scroll; height:100px">
+    <% @sent_emails.each do |email| %>
+      <li><%= link_to email.subject, open_path(:email_id=>email.id), :remote=>true %></li>
+    <% end %>
+  </ul>
+</div>
+<hr />
 </p>

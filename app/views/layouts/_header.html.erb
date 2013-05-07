@@ -1,18 +1,13 @@
 <div id="siteHeader">
   <% image_tag('main_header.png') %>
   <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
+        <div class="navbar-inner" style="height:50px">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-          <% if !session[:user] %>
-            <a class="brand" href="#">EZPetSitting</a>
-          <% else %>
-            <a class="brand" href="#"><%= session[:user][:email] %></a>
-          <% end %>
           <div class="nav-collapse">
             <ul class="nav">
               <li><%= link_to "Home", "/users" %></li>
@@ -22,8 +17,20 @@
               <li><%= link_to "Contract", contracts_path %></li>
               <li><%= link_to "Calendar", "/calendar" %></li>
               <li><%= link_to "Email", email_index_path %></li>
-              <li><%= link_to "logout", "/users/logout" %></li>
             </ul>
+            <div style="margin-top:6px" class="right">
+              <% if !session[:user] %>
+                <%= form_tag "/users/login", :remote=>true do %>
+                  Email:<%= text_field_tag :email, '', :style=>'width:100px' %>
+                  Password:<%= text_field_tag :passcode, '', :style=>'width:100px' %>
+                  <%= submit_tag "login", :class=>"btn", :style=>"margin-bottom:12px" %>
+                  <%= link_to "create account", "/users/create_account", :remote=>true, :style=>"font-size:20px;margin-bottom:12px", :class=>"btn" %>
+                <% end %>
+              <% else %>
+                <a class="brand" href="#"><%= session[:user][:email] %></a>
+                <%= link_to "logout", "/users/logout", :class=>"btn" %>
+              <% end %>
+            </div>
           </div>
           </div>
           </div>
