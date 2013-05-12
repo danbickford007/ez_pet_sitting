@@ -1,8 +1,11 @@
 <h4>Create you account today to gain access to our free tools!</h4>
 <% @user = User.new %>
 <%= form_for @user do |f| %>
-  Username:<%= f.text_field :email %><br />
+  Email:<%= f.text_field :email %><br />
+  First Name:<%= f.text_field :first_name %><br />
+  Last Name:<%= f.text_field :last_name %><br />
   Password:<%= f.password_field :passcode %><br />
+  Password Again:<%= password_field_tag :passcode2 %><br />
   <%= f.submit %>
 
 

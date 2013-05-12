@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def create_account
     @title = "New Account"
-    @options = {'height'=>'300', 'width'=>'500'}.to_json
+    @options = {'height'=>'500', 'width'=>'500'}.to_json
     @partial = "new_account"
     render "shared/lightbox"
   end
