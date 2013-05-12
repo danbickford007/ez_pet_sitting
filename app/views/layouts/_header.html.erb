@@ -10,13 +10,13 @@
         </a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Home", "/users" %></li>
+              <li><%= link_to "Home", "/" %></li>
               <li><%= link_to "Profile", "/profiles" %></li>
-              <li><%= link_to "Services", services_path %></li>
-              <li><%= link_to "About Us", about_index_path %></li>
-              <li><%= link_to "Contract", contracts_path %></li>
+              <li><%= link_to "Services", "/services-page" %></li>
+              <li><%= link_to "About Us", "/about-page" %></li>
+              <li><%# link_to "Contract", contracts_path %></li>
               <li><%= link_to "Calendar", "/calendar" %></li>
-              <li><%= link_to "Email", email_index_path %></li>
+              <li><%= link_to "Email", "/email" %></li>
             </ul>
             <div style="margin-top:6px" class="right">
               <% if !session[:user] %>

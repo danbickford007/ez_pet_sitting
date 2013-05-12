@@ -1,5 +1,11 @@
 EzPetSitting::Application.routes.draw do
 
+  # This line mounts Refinery's routes at the root of your application.
+  # This means, any requests to the root URL of your application will go to Refinery::PagesController#home.
+  # If you would like to change where this extension is mounted, simply change the :at option to something different.
+  #
+  # We ask that you don't use the :as option here, as Refinery relies on it being the default of "refinery"
+
   scope :path=>"email", :controller=>"email" do
     post "send_and_save"
     get 'open'
@@ -17,23 +23,26 @@ EzPetSitting::Application.routes.draw do
     post "update_appointment"
     get "cancel"
   end
-
+  resources :calendar
+  resources :appointments
+  resources :profiles
+  resources :pet
+  resources :users
+  resources :pets
+  resources :email
   scope :path=>"users", :controller=>"users" do
     get "create_account"
     post "login"
     get "logout"
   end
+  
+  mount Refinery::Core::Engine, :at => '/'
 
-  resources :appointments
-  resources :calendar
-  resources :profiles
+
+
   resources :services
-  resources :pets
-  resources :email
   resources :contracts
   resources :about
-  resources :pet
-  resources :users
   root :to=>"users#index"
 
   # The priority is based upon order of creation:
