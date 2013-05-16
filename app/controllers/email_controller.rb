@@ -1,5 +1,7 @@
 class EmailController < ApplicationController
-  
+
+  before_filter :access_denied
+
   def index
     @emails = Email.where(:to_user=>session[:user][:id])
     @sent_emails = Email.where(:from_user=>session[:user][:id])
