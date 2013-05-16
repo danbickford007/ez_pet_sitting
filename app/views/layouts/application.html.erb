@@ -7,14 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="container">
-    <div class="header"><%= render :partial=>"/layouts/header" %></div>
-    <div id="main">
+  <div class="header"><%= render :partial=>"/layouts/header" %></div>
+    <div id="mainDiv">
       <%= yield %>
     </div>
     <%= render :partial=>"/layouts/footer.html.erb" %>
-  </div>
-  <div id="dialog" title="Basic dialog">
+  <div id="dialog" title="EZPetSitting.com">
 
   </div>
 </body>

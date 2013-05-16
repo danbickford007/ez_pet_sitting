@@ -1,6 +1,6 @@
 class CalendarController < ApplicationController
 
-  skip_before_filter :access_denied, :only=>:show
+  before_filter :access_denied
 
   def index
     if session[:user]

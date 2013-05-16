@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 
   def logout
     session[:user] = nil
-    redirect_to "/users"
+    redirect_to "/"
   end
 
   # GET /users/1/edit

@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
       if request.xhr?
         render "shared/access_denied"
       else
-        redirect_to '/users'
+        redirect_to '/'
       end
     end
   end

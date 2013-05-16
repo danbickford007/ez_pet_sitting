@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
 
+  before_filter :access_denied
+
   def index
     @user = User.find(session[:user])
     if @addresses = @user.addresses
