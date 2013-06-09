@@ -23,7 +23,22 @@
 
 html body{
   background-color:blue;
-  background-image:url('mountains.png')
+  background-image:url('mountains.png');
+  font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+}
+
+p{
+  font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+}
+
+strong{
+  font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+
+}
+
+li{
+  font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+
 }
 
 .nav li{
@@ -57,7 +72,6 @@ html body{
   height:900px;
   padding:10px;
   width:80%;
-  display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 80px; 
