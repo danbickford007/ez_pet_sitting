@@ -48,8 +48,8 @@ li{
 
 #footer {
   position:relative;
-  top:-40px;
-  left:300px; 
+  top:-10px;
+  left:250px; 
 }
 
 #footer ul li {
@@ -71,12 +71,13 @@ li{
   background-color:white;
   height:900px;
   padding:10px;
-  width:80%;
+  width:90%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 80px; 
   border-radius:10px;
-  zoom:1;
+  overflow-y:auto;
+  display:block;
 }
 
 #disclaimer{
