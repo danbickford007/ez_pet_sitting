@@ -1,10 +1,12 @@
 <%= form_tag '/email/send_email' do %>
-
+  <h3>Send me a message and I will contact you as soon as possible.</h3>
   Email:<br />
   <%= text_field_tag :email %>
   <br />
-  <%= text_area_tag :content, '', :rows=>10, :cols=>100 %>
+  <%= text_area_tag :content, '', :rows=>10, :style=>"width:1200px" %>
   <br />
-  <%= submit_tag %>
+  <%= submit_tag 'Send' %>
 
 <% end %>
+
+<h4>(863) 604 - 6275</h4>
