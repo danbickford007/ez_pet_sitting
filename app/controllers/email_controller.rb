@@ -24,9 +24,9 @@ class EmailController < ApplicationController
   end
 
   def send_email
-    Thread.new do
-      UserMailer.comment_created(params[:email], params[:content]).deliver
-    end
+    #Thread.new do
+      UserMailer.contact(params[:email], params[:content]).deliver
+    #end
     redirect_to "/"
   end
 
