@@ -36,7 +36,7 @@ config.action_mailer.delivery_method = :smtp
      address: "smtpout.secureserver.net",
      port: "80",            
      authentication: :plain,
-     user_name: "dbickford83",
+     user_name: "info@ddbhosting.org",
      password: 'Daniel_6050'
    }
    config.action_mailer.raise_delivery_errors = true
