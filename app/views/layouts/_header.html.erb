@@ -5,28 +5,9 @@
           <ul class="nav">
             <li><%= link_to "Home", "/" %></li>
             <li><%= link_to "Services", "/services-page" %></li>
-            <li><%= link_to "About Us", "/about-page" %></li>
+            <li><%= link_to "About Me", "/about-page" %></li>
             <li><%= link_to "Contract", "/contract" %></li>
-            <% if session[:user] %>
-              <li><%= link_to "Profile", "/profiles" %></li>
-              <li><%= link_to "Calendar", "/calendar" %></li>
-              <li><%= link_to "Email", "/email" %></li>
-            <% end %>
-            <li>
-              <div style="margin-top:6px" class="right">
-                <% if !session[:user] %>
-                  <%= form_tag "/users/login", :remote=>true do %>
-                    Email:<%= text_field_tag :email, '', :style=>'width:10%;height:10px' %>
-                    Password:<%= text_field_tag :passcode, '', :style=>'width:10%;height:10px' %>
-                    <%= submit_tag "login", :class=>"btn", :style=>"margin-bottom:12px" %>
-                    <%= link_to "create account", "/users/create_account", :remote=>true, :style=>"font-size:15px;margin-bottom:12px", :class=>"btn" %>
-                  <% end %>
-                <% else %>
-                  <a class="brand" href="#"><%= session[:user][:email] %></a>
-                  <%= link_to "logout", "/users/logout", :class=>"btn" %>
-                <% end %>
-              </div>
-            </li>
+            <li><%= link_to "Contact Me", "/email/contact" %></li>
           </ul>
         </div>
       </div>

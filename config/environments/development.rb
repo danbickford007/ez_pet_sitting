@@ -31,7 +31,16 @@ EzPetSitting::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
-
+config.action_mailer.delivery_method = :smtp
+   config.action_mailer.smtp_settings = {
+     address: "smtpout.secureserver.net",
+     port: "80",            
+     authentication: :plain,
+     user_name: "info@ddbhosting.org",
+     password: 'Daniel_6050'
+   }
+   config.action_mailer.raise_delivery_errors = true
+   config.active_support.deprecation = :notify
   # Expands the lines which load the assets
   config.assets.debug = true
 end

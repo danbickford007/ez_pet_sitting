@@ -1,6 +1,6 @@
 class EmailController < ApplicationController
 
-  before_filter :access_denied
+  before_filter :access_denied, :except=>[:contact, :send_email]
 
   def index
     @emails = Email.where(:to_user=>session[:user][:id])
@@ -17,6 +17,17 @@ class EmailController < ApplicationController
   def send_and_save
     Email.send_and_save(params[:email])
     redirect_to '/email'
+  end
+
+  def contact
+    render 'contact'
+  end
+
+  def send_email
+    Thread.new do
+      UserMailer.comment_created(params[:email], params[:content]).deliver
+    end
+    redirect_to "/"
   end
 
 end

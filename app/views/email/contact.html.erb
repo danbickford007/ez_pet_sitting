@@ -1,0 +1,10 @@
+<%= form_tag '/email/send_email' do %>
+
+  Email:<br />
+  <%= text_field_tag :email %>
+  <br />
+  <%= text_area_tag :content, '', :rows=>10, :cols=>100 %>
+  <br />
+  <%= submit_tag %>
+
+<% end %>
