@@ -5,8 +5,23 @@
   <br />
   <%= text_area_tag :content, '', :rows=>10, :style=>"width:1200px" %>
   <br />
-  <%= submit_tag 'Send' %>
+  <%= submit_tag 'Send', :onclick=>"if(checkFields()){return false;}" %>
 
 <% end %>
 
 <h4>(863) 604 - 6275</h4>
+
+<script>
+  function checkFields(){
+    var email = $('#email').val();
+    if(email == ''){
+      $('#email').css('background-color', 'pink');
+      return true
+    }
+    return false;
+  }
+  $('#email').click(function(){
+    $('#email').css('background-color', 'white');
+  })
+
+</script>
